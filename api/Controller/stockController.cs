@@ -20,9 +20,9 @@ namespace API.Contollers
         }
 
         [HttpGet]
-        public async Task<IactionResult> Getall()
+        public async Task<IactionResult> Getall([FromQuery]QueryObject query)
         {
-            var stocks = await _stockrepo.GetAllAsync();
+            var stocks = await _stockrepo.GetAllAsync(query);
 
             var stockDto = stocks.Select(s => s.ToStockDto());
 

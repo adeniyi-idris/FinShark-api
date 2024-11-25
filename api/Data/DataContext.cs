@@ -14,10 +14,10 @@ namespace API.Data
             
         }
 
-        public DbSet<stock> stocks {get; set;}
+        public DbSet<Stock> stocks {get; set;}
 
-        public DbSet<comment> comments {get; set;}
+        public DbSet<Comment> comments {get; set;}
 
-
+        public DbSet<Portfolio> portfolios {get; set;}
     }
 }

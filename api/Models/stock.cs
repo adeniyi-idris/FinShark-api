@@ -22,6 +22,8 @@ namespace API.Models
 
         public long MarketCap { get; set; }
         //Navigation Property
-        public List<comment> comments {get; set;} = new List<comment>
+        public List<comment> comments {get; set;} = new List<comment>();
+
+        public List<Portfolio> portfolio {get; set;} = new List<Portfolio> ();
     }
 }

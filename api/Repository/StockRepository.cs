@@ -16,9 +16,37 @@ namespace api.Properties
             _context = context;
         }
 
-        public async Task<List<stock>> GetAllAsync()
+        public async Task<List<stock>> GetAllAsync(QueryObject query)
         {
-            return await _context.stocks.Include(c => c.comments).ToListAsync();
+            //return await _context.stocks.Include(c => c.comments).ToListAsync(); One-to-many using include() method
+
+            //This is for filtering
+            var stocks =  _context.stocks.Include(c => c.comments).AsQueryable();
+
+            if(!string.IsNullOrWhiteSpace(query.CompanyName))
+            {
+                stocks = stocks.Where(s => s.CompanyName.Contains(query.CompanyName))
+            }
+
+            if(!string.IsNullOrWhiteSpace(query.Symbol))
+            {
+                stocks = stocks.Where(s => s.Symbol.Contains(query.Symbol))
+            }
+
+            //sorting
+            if(!string.IsNullOrWhiteSpace(query.SortBy))
+            {
+                if(query.SortBy.Equals("Symbol", stringComparison.OrdinalIgnoreCase))
+                {
+                    stocks = query.IsDescending ? stocks.OrderByDescending(s => s.Symbol) : stocks.OrderBy(s => s.Symbol)
+                }
+            }
+
+            //Pagination
+            var skipNumber = (query.PageNumber - 1) * query.PageSize;
+
+            return await stocks.Skip(skipNumber).Take(query.PageSize).ToListAsync();
+            //return await stocks.ToListAsync();
         }
 
         public async Task<stock> GetByIdAsync(int id)
