@@ -103,5 +103,12 @@ namespace api.Properties
         {
             return _context.stocks.AnyAsync(s => s.Id == id)
         }
+
+        public Task<stock?> GetBySymbolAsync(string symbol)
+        {
+            retrun await _context.stocks.FirstOrDefaultAsync(s => s.Symbol == symbol);
+        }
     }
 }
+
+       

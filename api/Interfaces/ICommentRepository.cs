@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace api.Interfaces
 {
-    public class ICommnetRepository
+    public class ICommentRepository
     {
         Task<List<comment>> GetAllAsync();
         Task<comment> GetByIdAsync();

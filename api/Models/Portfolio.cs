@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using API.Models;
 
 namespace api.Models
 {
@@ -13,6 +14,6 @@ namespace api.Models
 
         public AppUser AppUser { get; set; }
 
-        public Stcock stock { get; set; }
+        public stock stock { get; set; }
     }
 }

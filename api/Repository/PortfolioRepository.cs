@@ -2,16 +2,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using api.Models;
+using API.Data;
+using API.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace api.Repository
 {
     public class PortfolioRepository
     {
-        private readonly DataContext _Context;
+        private readonly DataContext _context;
 
         public PortfolioRepository(DataContext context)
         {
-            _Context = context;
+            _context = context;
         }
 
         public async Task<Portfolio> CreateAsync(Portfolio portfolio)
@@ -25,7 +29,7 @@ namespace api.Repository
         public async Task<Portfolio> DeletePortfolio(AppUser appUser, string symbol)
         {
             var portfolioModel =  await _context.portfolios.FirstOrDefaultAsync(x => x.AppUserId
-             == appUser.Id && x.Stock.Symbol.ToLower() == symbol.ToLower());
+             == appUser.id && x.Stock.Symbol.ToLower() == symbol.ToLower());
 
              if (portfolioModel == null)
              {
@@ -39,17 +43,17 @@ namespace api.Repository
              return portfolioModel;
         }
 
-        public async Task<List<Stock>> GetUserPortfolio(AppUser user)
+        public async Task<List<stock>> GetUserPortfolio(AppUser user)
         {
             return await _context.portfolios.Where(u => u.AppUserId == user.Id)
-            . Select(stock => new Stock{
-                Id = stock.StockId,
-                Symbol = stock.Stock.Symbol,
-                CompanyName = stock.Stock.Symbol,
-                Purchase = stock.Stock.Purchase,
-                LastDiv = stock.Stock.LastDiv,
-                Industry = stock.Stock.Industry,
-                MarketCap = stock.Stock.MarketCap
+            . Select(stock => new stock{
+                Id = stock.stockId,
+                Symbol = stock.stock.Symbol,
+                CompanyName = stock.stock.Symbol,
+                Purchase = stock.stock.Purchase,
+                LastDiv = stock.stock.LastDiv,
+                Industry = stock.stock.Industry,
+                MarketCap = stock.stock.MarketCap
             }).ToListAsync();
         }
     }
