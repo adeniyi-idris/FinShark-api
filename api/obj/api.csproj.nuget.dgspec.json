@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hp\\Documents\\DotNet\\Project 1\\api\\api.csproj": {}
+    "c:\\Users\\hp\\Documents\\DotNet\\Project 1\\api\\api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hp\\Documents\\DotNet\\Project 1\\api\\api.csproj": {
+    "c:\\Users\\hp\\Documents\\DotNet\\Project 1\\api\\api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hp\\Documents\\DotNet\\Project 1\\api\\api.csproj",
+        "projectUniqueName": "c:\\Users\\hp\\Documents\\DotNet\\Project 1\\api\\api.csproj",
         "projectName": "api",
-        "projectPath": "C:\\Users\\hp\\Documents\\DotNet\\Project 1\\api\\api.csproj",
+        "projectPath": "c:\\Users\\hp\\Documents\\DotNet\\Project 1\\api\\api.csproj",
         "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hp\\Documents\\DotNet\\Project 1\\api\\obj\\",
+        "outputPath": "c:\\Users\\hp\\Documents\\DotNet\\Project 1\\api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -45,6 +45,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[8.0.4, )"
@@ -68,6 +76,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.10, )"
+            },
+            "Microsoft.Extensions.Identity.Core": {
+              "target": "Package",
+              "version": "[9.0.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
